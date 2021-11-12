@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
       if (trimedTab.every(hasThreeCharacters)) {
         next();
       } else {
-        throw new Error("Tous les champs doivent faire au moins 3 caractères");
+        throw new Error("All fields must be atleast 3 characters long");
       }
     } else {
       // if this is the PUT route 
@@ -33,7 +33,7 @@ module.exports = (req, res, next) => {
       if (trimedTab.every(hasThreeCharacters)) {
         next();
       } else {
-        throw new Error("Tous les champs doivent faire au moins 3 caractères");
+        throw new Error("All fields must be atleast 3 characters long");
       }
     }
   };

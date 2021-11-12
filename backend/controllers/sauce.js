@@ -1,4 +1,4 @@
-const Sauce = require("../models/Sauce");
+const Sauce = require("../models/sauce");
 const fs = require('fs');
 
 // Show all sauces 
@@ -17,11 +17,12 @@ exports.getOneSauce = (req, res, next) => {
 
 // Create New Sauce 
 exports.createSauce = (req, res, next) => {
-  const sauceObject = JSON.parse(req.body.sauce)
+  const sauceObject = JSON.parse(req.body.sauce);
+  const url = req.protocol + '://' + req.get('host');
   delete sauceObject._id;
   const sauce = new Sauce({
     ...sauceObject,
-    imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
+    imageUrl: url + '/images/' + req.file.filename,
     likes: 0,
     dislikes: 0,
     usersLiked: [' '],

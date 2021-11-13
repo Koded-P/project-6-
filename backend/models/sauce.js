@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//Data ModelsSauce
 const sauceSchema = mongoose.Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },

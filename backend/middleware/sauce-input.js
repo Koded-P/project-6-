@@ -28,7 +28,7 @@ module.exports = (req, res, next) => {
       }
       toTrim(name, manufacturer, description, mainPepper);
   
-      // Verifty the number of characters 
+      // Verify the number of characters 
       const hasThreeCharacters = (currentValue) => currentValue.length >= 3;
       if (trimedTab.every(hasThreeCharacters)) {
         next();

@@ -76,7 +76,7 @@ exports.likeDislikeSauce = (req, res, next) => {
           .then(() => res.status(200).json({ message: `liked` }))
           .catch((error) => res.status(400).json({ error }))
       break;
-          // Sauce dislike
+          // Neutral
     case 0 :
         Sauce.findOne({ _id: sauceId })
            .then((sauce) => {

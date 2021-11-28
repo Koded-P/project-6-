@@ -50,7 +50,7 @@ exports.updateSauce = (req, res, next) => {
   Sauce.updateOne({ _id : req.params.id}, {...sauceObject, _id: req.params.id})
   .then(res.status(200).json({ message : "Sauce modified successfully"}))
   .catch(error => res.status(400).json({ error }))
-  next();
+  // next();
 }
 
 // Delete sauce
@@ -62,11 +62,10 @@ exports.deleteSauce = (req, res, next) => {
       Sauce.deleteOne({_id : req.params.id})
   .then(res.status(200).json({ message: "Sauce deleted successfully" }))
   .catch(error => res.status(400).json({ error }))
-  
     })
   })
   .catch(error => res.status(500).json({ error }))
-  next();
+  // next();
 }
 
 // Like / Dislike sauce
@@ -80,7 +79,7 @@ exports.likeDislikeSauce = (req, res, next) => {
         Sauce.updateOne({ _id: sauceId }, { $push: { usersLiked: userId }, $inc: { likes: +1 }})
           .then(() => res.status(200).json({ message: `liked` }))
           .catch((error) => res.status(400).json({ error }))
-          next();
+          // next();
       break;
           // Sauce dislike
     case 0 :
@@ -90,13 +89,13 @@ exports.likeDislikeSauce = (req, res, next) => {
               Sauce.updateOne({ _id: sauceId }, { $pull: { usersLiked: userId }, $inc: { likes: -1 }})
                 .then(() => res.status(200).json({ message: `neutral` }))
                 .catch((error) => res.status(400).json({ error }))
-                next();
+                // next();
             }
             if (sauce.usersDisliked.includes(userId)) { 
               Sauce.updateOne({ _id: sauceId }, { $pull: { usersDisliked: userId }, $inc: { dislikes: -1 }})
                 .then(() => res.status(200).json({ message: `neutral` }))
                 .catch((error) => res.status(400).json({ error }))
-              next();
+              // next();
             }
           })
           .catch((error) => res.status(404).json({ error }))
@@ -106,7 +105,7 @@ exports.likeDislikeSauce = (req, res, next) => {
         Sauce.updateOne({ _id: sauceId }, { $push: { usersDisliked: userId }, $inc: { dislikes: +1 }})
           .then(() => { res.status(200).json({ message: `unliked` }) })
           .catch((error) => res.status(400).json({ error }))
-          next();
+          // next();
       break;
       
       default:

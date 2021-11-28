@@ -2,13 +2,13 @@ module.exports = (req, res, next) => {
     //if this is the POST route 
     if (JSON.parse(req.body.sauce !== undefined)) {
       const sauce = JSON.parse(req.body.sauce);
-      let { name, manufacturer, description, mainPepper, imageUrl, heat, likes, dislikes, usersLiked, usersDisliked} = sauce;
+      let { name, manufacturer, description, mainPepper, imageUrl} = sauce;
       let trimedTab = [];
   
       function toTrim(...string) {
         trimedTab = string.map((elt) => elt.trim());
       }
-      toTrim(name, manufacturer, description, mainPepper, imageUrl, heat, likes, dislikes, usersLiked, usersDisliked);
+      toTrim(name, manufacturer, description, mainPepper, imageUrl);
   
       // Verify the number of characters 
       const hasThreeCharacters = (currentValue) => currentValue.length >= 3;

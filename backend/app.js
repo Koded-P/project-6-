@@ -27,11 +27,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// app.use((req, res, next) => {
-//   res.json({ message: 'Your request was successful'});
-//   next();
-// });
-
 app.use(express.json());
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
